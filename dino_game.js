@@ -17,11 +17,11 @@ document.onkeydown = function (e) {
 
   else if (e.keyCode == 39) {
     let dinox = parseInt(window.getComputedStyle(dino, null).getPropertyValue("left"));
-    dino.style.left = dinox + 112 + "px";
+    dino.style.left = (dinox + window.innerWidth * 0.06)+"px";
   }
   else if (e.keyCode == 37) {
     let dinox = parseInt(window.getComputedStyle(dino, null).getPropertyValue("left"));
-    dino.style.left = (dinox - 112) + "px";
+    dino.style.left = (dinox - window.innerWidth * 0.06)+"px";
   }
 
 }
@@ -55,7 +55,7 @@ setInterval(() => {
 let aniDur = parseFloat(window.getComputedStyle(dragon).getPropertyValue("animation-duration"));
         if (aniDur > 1.5) { 
             aniDur -= 0.1;
-            dragon.style.animationDuration = aniDur + 's';
+            dragon.style.animationDuration = (aniDur-0.1) + 's';
         }
     }
   );
