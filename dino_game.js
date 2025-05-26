@@ -4,6 +4,8 @@ let dragon = document.querySelector(".dragon");
 let score = 0;
 let cross = true;
 let count = document.querySelector(".count");
+let restartBtn = document.querySelector("#restartBtn"); 
+
 document.onkeydown = function (e) {
   console.log("key code is: ", e.keyCode);
   if (e.keyCode == 38) {
@@ -34,11 +36,12 @@ setInterval(() => {
   let offsetx = Math.abs(dx-ox);
   let offsety = Math.abs(dy-oy);
   console.log(offsetx, offsety);
+
    if (offsetx < 44 && offsety < 62) {
     let gameover=document.querySelector("#gameover");
      gameover.style.visibility = "visible";
       dragon.classList.remove("dragonAni");
-     console.log("over");
+     restartBtn.style.visibility = "visible"; 
    }
    else if (offsetx < 96 && cross) {
     score += 1;
@@ -49,9 +52,19 @@ setInterval(() => {
     }, 1000);
   }
   setTimeout(()=>{
-
-  });
+let aniDur = parseFloat(window.getComputedStyle(dragon).getPropertyValue("animation-duration"));
+        if (aniDur > 1.5) { 
+            aniDur -= 0.1;
+            dragon.style.animationDuration = aniDur + 's';
+        }
+    }
+  );
 },50);
+
+
+restartBtn.onclick = () => { 
+    location.reload();
+};
 
 function updateScore(score) {
   count.innerHTML = "Your Score:" + score;
