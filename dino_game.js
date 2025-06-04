@@ -26,6 +26,17 @@ document.onkeydown = function (e) {
 
 }
 
+function isColliding(a, b) {
+       const aRect = a.getBoundingClientRect();
+         const bRect = b.getBoundingClientRect();
+        return !(
+            aRect.top > bRect.bottom ||
+            aRect.bottom < bRect.top ||
+            aRect.right < bRect.left ||
+             aRect.left > bRect.right
+         );
+     }
+
 setInterval(() => {
   let dx = parseInt(window.getComputedStyle(dino, null).getPropertyValue("left"));
   let dy = parseInt(window.getComputedStyle(dino, null).getPropertyValue("top"));
@@ -42,6 +53,7 @@ setInterval(() => {
      gameover.style.visibility = "visible";
       dragon.classList.remove("dragonAni");
      restartBtn.style.visibility = "visible"; 
+      clearInterval(checkCollision); 
    }
    else if (offsetx < 96 && cross) {
     score += 1;
@@ -51,6 +63,7 @@ setInterval(() => {
       cross = true;
     }, 1000);
   }
+
   setTimeout(()=>{
 let aniDur = parseFloat(window.getComputedStyle(dragon).getPropertyValue("animation-duration"));
         if (aniDur > 1.5) { 
