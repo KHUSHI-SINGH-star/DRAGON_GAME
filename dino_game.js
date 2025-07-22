@@ -17,11 +17,11 @@ document.onkeydown = function (e) {
 
   else if (e.keyCode == 39) {
     let dinox = parseInt(window.getComputedStyle(dino, null).getPropertyValue("left"));
-    dino.style.left = (dinox + window.innerWidth * 0.06)+"vw";
+    dino.style.left = (dinox + window.innerWidth * 0.06)+"px";
   }
   else if (e.keyCode == 37) {
     let dinox = parseInt(window.getComputedStyle(dino, null).getPropertyValue("left"));
-    dino.style.left = (dinox - window.innerWidth * 0.06)+"vw";
+    dino.style.left = (dinox - window.innerWidth * 0.06)+"px";
   }
 
 }
